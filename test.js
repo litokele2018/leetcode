@@ -1,20 +1,35 @@
-var powerfulIntegers = function (x, y, bound) {
-  let arr = []
-  let set = new Set()
-  handler(x, y, arr, bound, 0, 0, set)
-  arr.sort((a, b) => a - b)
-  return arr
+var numPrimeArrangements = function (n) {
+    let primeCount = 0
+    debugger
+    for (let i = 2; i <= n; i++) {
+        if (isPrimeNum(i)) {
+            primeCount++
+        }
+    }
+    let otherCount = n - primeCount
+    let ans = 1
+    while (primeCount > 0) {
+        ans = ans * primeCount
+        primeCount--
+    }
+    let otherAns = 1
+    while (otherCount > 0) {
+        otherAns = otherAns * otherCount
+        otherCount--
+    }
+    return ans * otherAns
 };
-function handler(x, y, arr, bound, i, j, set) {
-  let val = Math.pow(x, i) + Math.pow(y, j)
-  if (val > bound || ((x === 1 && i > 0) || (y === 1 && j > 0))) return
-  if (!set.has(val)) {
-      set.add(val)
-      arr.push(val)
-  }
-  handler(x, y, arr, bound, i, j + 1, set)
-  handler(x, y, arr, bound, i + 1, j, set)
-  handler(x, y, arr, bound, i + 1, j + 1, set)
-}
 
-powerfulIntegers(2, 1, 10)
+function isPrimeNum(num) {
+    /*  
+      如果一个数可以被拆分为两个数的乘积形式 
+      如 16 = 4 * 4 则不是质数
+      所以两个数必须有一个小于sqrt(num)
+    */
+    let sqrt = Math.sqrt(num)
+    for (let i = 2; i <= sqrt; i++) {
+        if (num % i === 0) return false
+    }
+    return true
+}
+numPrimeArrangements(5)
