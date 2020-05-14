@@ -45,9 +45,7 @@ var levelOrderBottom = function (root) {
 };
 
 function helper(node, level, map) {
-  if (!node) {
-    return
-  }
+  if (!node) return
   let arr = []
   if (!map.get(level)) {
     arr.push(node.val)
