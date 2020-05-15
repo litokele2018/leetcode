@@ -1,25 +1,10 @@
-var lengthOfLongestSubstring = function(s) {
-  let map = new Map()
-  let len = s.length
-  let max = 0
-  let count = 0
-
-  for (let i = 0; i < len; i++) {
-    debugger
-    if (!map.get(s[i])) {
-      map.set(s[i], i)
-      count++
-      max = Math.max(count, max)
-    } else {
-      let j = map.get(s[i])
-      map.clear()
-      count = 0
-      i = j
-      continue
-    }
+var toHex = function(num) {
+  if (!num) return '0';
+  let res = '';
+  const position = '0123456789abcdef';
+  while (num != 0 && res.length < 8) {
+    res = position[num & 15] + res;
+    num >>= 4;
   }
-  return max
+  return res;
 };
-
-let s = "abcabcbbc"
-lengthOfLongestSubstring(s)
