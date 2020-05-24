@@ -25,7 +25,6 @@ var minWindow = function(s, t) {
   // 记录总的数量
   let distance = 0;
   while (right < sLen) {
-    debugger
     if (!tMap.get(s[right])) {
       right++
       continue
