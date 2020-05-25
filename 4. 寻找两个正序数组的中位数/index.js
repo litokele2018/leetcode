@@ -55,8 +55,8 @@ var findMedianSortedArrays = function(nums1, nums2) {
       if (temp > 1) {
         temp = Math.floor(temp / 2) // temp = 3
       }
-      if (temp > length1 || temp > length2) {
-        temp = 1
+      if (temp > length1 || temp > length2) { 
+        temp = 1 // 这里其实可以优化 这里变成了一个一个找， 并不符合二分了
       }
       if (nums1[temp - 1 + i] > nums2[temp - 1 + j]) {
         j += temp
